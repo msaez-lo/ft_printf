@@ -4,23 +4,20 @@ SRC = ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
-LIB = -Llibft
-
 INCLUDE = ft_printf.h
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra #-Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
 all: $(NAME)
 
-$(NAME): libft $(OBJ) $(INCLUDE)
-		$(CC) $(OBJ) -o $(NAME) $(LIB)
-
-libft: 
+$(NAME): $(OBJ) $(INCLUDE)
 		make -C libft
+		cp libft/libft.a .
+		$(CC) $(OBJ) libft.a -o $(NAME)
 
 %.o: %.c
 		$(CC) $(CFLAGS) -c -o $@ $<

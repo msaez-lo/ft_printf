@@ -1,7 +1,10 @@
 #ifndef PRINTF_H
 # define PRINTF_H
-#include "libft/libft.h"
+
+# include "./libft/libft.h"
+# include <stdio.h>
 
 int     ft_printf(char const *str, ...);
+int     num_var(char const *s)
 
 #endif

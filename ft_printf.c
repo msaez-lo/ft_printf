@@ -9,16 +9,9 @@
 /*   Updated: 2022/12/14 19:26:57 by msaez-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+# include "./libft/libft.h"
 
-/*int ft_printf(char const *str, ...)
+int ft_printf(char const *str, ...)
 {
-}
-*/
-int main ()
-{
-    char *s;
-    s = "Hola";
-    printf("hola");
-    return (0);
+    
 }
