@@ -31,6 +31,7 @@ void			*ft_memcpy(void *dst, const void *src, int n);
 void			*ft_memmove(void *dst, const void *src, int len);
 void			*ft_memset(void *str, int c, int n);
 char			**ft_split(char const *s, char c);
+char			**ft_splitf(char const *s, char c);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s1);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));

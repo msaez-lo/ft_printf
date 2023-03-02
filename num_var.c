@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
 int	num_var(char const *s)
 {
@@ -27,7 +27,7 @@ int	num_var(char const *s)
 				&& s[i + 1] != 'd' && s[i + 1] != 'i' && s[i + 1] != 'u'
 				&& s[i + 1] != 'x' && s[i + 1] != 'X' && s[i + 1] != '%')
 				return (-1);
-			else
+			else if (s[i + 1] != '%')
 				r++;
 			if (s[i + 1] == '%')
 				i++;
@@ -39,8 +39,9 @@ int	num_var(char const *s)
 	else
 		return (r);
 }
-/*
+
 int main()
 {
-	printf("%d\n", num_var("%dfjds%ckf%"));
-}*/
+	char **s = ft_splitf("hola buenos dia%%%d numero %d, caracter %c", '%');
+	printf("%s\n", s[0]);
+}

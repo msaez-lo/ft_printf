@@ -9,9 +9,13 @@
 /*   Updated: 2022/12/14 19:26:57 by msaez-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "./libft/libft.h"
+# include "ft_printf.h"
 
 int ft_printf(char const *str, ...)
 {
-    
+    char **s;
+    va_list ptr;
+
+    va_start(ptr, num_var(str));
+    s = (char **)malloc 
 }
