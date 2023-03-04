@@ -6,5 +6,6 @@
 
 int     ft_printf(char const *str, ...);
 int     num_var(char const *s);
+char	*rm_perc(char const *str);
 
 #endif

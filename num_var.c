@@ -39,9 +39,13 @@ int	num_var(char const *s)
 	else
 		return (r);
 }
-
+/*
 int main()
 {
-	char **s = ft_splitf("hola buenos dia%%%d numero %d, caracter %c", '%');
-	printf("%s\n", s[0]);
-}
+	int i = -1;
+	char **s = ft_splitf("hola buenos dia%%, que tal estas%d numero %d, caracter %c", '%');
+	while (s[++i])
+	{
+		printf("%s/    /%d\n", s[i], i);
+	}
+}*/
