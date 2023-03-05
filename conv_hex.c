@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conv_hex.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msaez-lo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 14:35:07 by msaez-lo          #+#    #+#             */
+/*   Updated: 2023/03/05 14:35:09 by msaez-lo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	wr_num_hex(int c, int M)
+void	wr_num_hex(unsigned int c, int M)
 {
 	char	s;
 
@@ -26,19 +38,21 @@ void	wr_num_hex(int c, int M)
 		}
 	}
 }
-void	conv_hex(int n, int M)
+
+void	conv_hex(unsigned int n, int M)
 {
-	int e;
+	int	e;
 	int	i;
 
 	e = 1;
 	i = 0;
-	while (e < n)
+	while (e < n && e < 268435456)
 	{
 		e = 16 * e;
 		i++;
 	}
-	e = e / 16;
+	if (e < 268435456)
+		e = e / 16;
 	while (--i != -1)
 	{
 		wr_num_hex(n / e, M);
@@ -46,3 +60,11 @@ void	conv_hex(int n, int M)
 		e = e / 16;
 	}
 }
+/*
+int main()
+{
+	unsigned int l;
+	l = 42949;
+	conv_hex(l,0);
+	printf("%x", l);
+}*/

@@ -15,12 +15,18 @@ void	putvar(char c, va_list ptr)
 {
 	if (c == 'c')
 		ft_putchar_fd(va_arg(ptr, int), 1);
-	if (c == 'd')
-		ft_putflt_fd(va_arg(ptr, double), 1);
-	if (c == 'i')
+	if (c == 'i' || c == 'd')
 		ft_putnbr_fd(va_arg(ptr, int), 1);
 	if (c == 's')
 		ft_putstr_fd(va_arg(ptr, char *), 1);
+    if (c == 'x')
+        conv_hex(va_arg(ptr, int), 1);
+    if (c == 'X')
+        conv_hex(va_arg(ptr, int), 0);
+    if (c == 'u')
+        ft_putlu_fd(va_arg(ptr, unsigned int), 1);
+    if (c == 'p')
+    	put_pointers(va_arg(ptr, void *));
 }
 
 int	ft_printf(char const *str, ...)
@@ -56,18 +62,20 @@ int	ft_printf(char const *str, ...)
 	}
 	return (0);
 }
-
+/*
 int main()
 {
-    int d = 35;
-    float f = 0.34;
+    unsigned int d = 4294967294;
     char c = 'n';
     char *s = "hola";
+    void *p;
+    p = s;
     //ft_putflt_fd(f, 1);
     //write(1,"\n", 1);
     //ft_printf("%c", c);
     //printf("%s\n", ft_splitf("%d", '%')[1]);
     //printf("%s", rm_perc(ft_splitf("%d", '%')[0]));
-    printf("hol%%, voy a escribir un numero:%i\nun float:%f\nun char:%c\nuna str:%s\n", d, f, c, s);
-    ft_printf("hol%%, voy a escribir un numero:%i\nun float:%d\nun char:%c\nuna str:%s\n", d, f, c, s);
-}
+    //printf("hol%%, numero:%i\nun char:%c\nuna str:%s\n", d, c, s);
+    ft_printf("hol%%, numero:%i\nun char:%c\nuna str:%s\n", d, c, s);
+    //printf("%x", -4721738);
+}*/
