@@ -11,25 +11,29 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	putvar(char c, va_list ptr)
+int	putvar(char c, va_list ptr)
 {
+	int	a;
+
+	a = 0;
 	if (c == 'c')
-		ft_putchar_fd(va_arg(ptr, int), 1);
+		a = a + ft_putchar_fd(va_arg(ptr, int), 1);
 	if (c == 'i' || c == 'd')
-		ft_putnbr_fd(va_arg(ptr, int), 1);
+		a = a + ft_putnbr_fd(va_arg(ptr, int), 1);
 	if (c == 's')
-		ft_putstr_fd(va_arg(ptr, char *), 1);
+		a = a + ft_putstr_fd(va_arg(ptr, char *), 1);
 	if (c == 'x')
-		conv_hex(va_arg(ptr, int), 1);
+		a = a + conv_hex(va_arg(ptr, int), 1);
 	if (c == 'X')
-		conv_hex(va_arg(ptr, int), 0);
+		a = a + conv_hex(va_arg(ptr, int), 0);
 	if (c == 'u')
-		ft_putlu_fd(va_arg(ptr, unsigned int), 1);
+		a = a + ft_putlu_fd(va_arg(ptr, unsigned int), 1);
 	if (c == 'p')
-		put_pointers(va_arg(ptr, void *));
+		a = a + put_pointers(va_arg(ptr, void *));
+	return (a);
 }
 
-int	save_lines1(char const *str, char **s, int i)
+int	save_lines1(char const *str, char **s, int i, int *a)
 {
 	char	*r;
 
@@ -40,10 +44,20 @@ int	save_lines1(char const *str, char **s, int i)
 		r = rm_perc(s[0]);
 		if (!r)
 			return (0);
-		ft_putstr_fd(r, 1);
+		*a = *a + ft_putstr_fd(r, 1);
 		free(r);
 	}
 	return (i);
+}
+
+void	freear1(char **r)
+{
+	int	i;
+
+	i = -1;
+	while (r[++i] != NULL)
+		free(r[i]);
+	free(r);
 }
 
 int	ft_printf(char const *str, ...)
@@ -51,29 +65,30 @@ int	ft_printf(char const *str, ...)
 	char	**s;
 	char	*r;
 	int		i;
+	int	a;
 	va_list	ptr;
 
 	i = 0;
 	va_start(ptr, str);
 	s = ft_splitf(str, '%');
-	i = save_lines1(str, s, i);
+	i = save_lines1(str, s, i, &a);
 	while (i != num_var(str) && s[i + 1] != NULL)
 	{
 		r = rm_perc(s[i + 1]);
 		if (!r)
 			return (0);
-		putvar(r[0], ptr);
+		a = a + putvar(r[0], ptr);
 		if (ft_strlen(r) > 1)
 		{
 			ft_putstr_fd(++r, 1);
-			free(--r);
+		free(--r);
 		}
 		else
 			free(r);
 		i++;
 	}
-	free(s);
-	return (0);
+	freear1(s);
+	return (a);
 }
 /*
 int main()

@@ -12,14 +12,17 @@
 
 #include "ft_printf.h"
 
-void	wr_num_hex_p(uintptr_t c)
+int	wr_num_hex_p(uintptr_t c)
 {
 	char	s;
+	int	a;
 
+	a = 0;
 	if (c <= 9)
 	{
 		s = c + '0';
 		write(1, &s, 1);
+		a++;
 	}
 	else
 	{
@@ -27,32 +30,43 @@ void	wr_num_hex_p(uintptr_t c)
 		s = c + '0';
 		s = s + 97 - 48;
 		write(1, &s, 1);
+		a++;
 	}
+	return (a);
 }
 
-void	conv_hex_p(uintptr_t n)
+int	conv_hex_p(uintptr_t n)
 {
+	int	a;
+
+	a = 0;
 	if (n / 16 != 0)
 	{
-		conv_hex_p(n / 16);
-		conv_hex_p(n % 16);
+		a = a + conv_hex_p(n / 16);
+		a = a + conv_hex_p(n % 16);
 	}	
 	else
-		wr_num_hex_p(n);
+		a = a + wr_num_hex_p(n);
+	return (a);
 }
 
-void	put_pointers(void *p)
+int	put_pointers(void *p)
 {
+	int	a;
+
+	a = 0;
 	if (p == NULL)
 	{
 		write(1, "0x0", 3);
-		return ;
+		return (3);
 	}
 	else
 	{
 		write(1, "0x", 2);
-		conv_hex_p((uintptr_t)p);
+		a = 2;
+		a = a + conv_hex_p((uintptr_t)p);
 	}
+	return (a);
 }
 /*
 int main()

@@ -14,10 +14,11 @@
 
 # include "libft/libft.h"
 # include <stdarg.h>
+# include <stdint.h>
 
 int		ft_printf(char const *str, ...);
 int		num_var(char const *s);
 char	*rm_perc(char const *str);
-void	conv_hex(unsigned int n, int M);
-void	put_pointers(void *p);
+int	conv_hex(unsigned int n, int M);
+int	put_pointers(void *p);
 #endif

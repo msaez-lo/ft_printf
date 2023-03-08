@@ -12,23 +12,22 @@
 
 #include "libft.h"
 
-void	ft_putlu_fd(unsigned int n, int fd)
+int	ft_putlu_fd(unsigned int n, int fd)
 {
 	char	character;
+	int	a;
 
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n = -1 * n;
-	}
+	a = 0;
 	if (n / 10 != 0)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		ft_putlu_fd(n / 10, fd);
+		ft_putlu_fd(n % 10, fd);
 	}	
 	else
 	{
 		character = n + '0';
 		write(fd, &character, 1);
+		a++;
 	}
+	return (a);
 }

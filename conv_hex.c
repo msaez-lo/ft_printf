@@ -12,14 +12,17 @@
 
 #include "ft_printf.h"
 
-void	wr_num_hex(unsigned int c, int M)
+int	wr_num_hex(unsigned int c, int M)
 {
 	char	s;
+	int	a;
 
+	a = 0;
 	if (c <= 9)
 	{
 		s = c + '0';
 		write(1, &s, 1);
+		a++;
 	}
 	else
 	{
@@ -29,23 +32,28 @@ void	wr_num_hex(unsigned int c, int M)
 			s = c + '0';
 			s = s + 65 - 48;
 			write(1, &s, 1);
+			a++;
 		}
 		else
 		{
 			s = c + '0';
 			s = s + 97 - 48;
 			write(1, &s, 1);
+			a++;
 		}
 	}
+	return (a);
 }
 
-void	conv_hex(unsigned int n, int M)
+int	conv_hex(unsigned int n, int M)
 {
 	unsigned int	e;
 	int	i;
+	int	a;
 
 	e = 1;
 	i = 0;
+	a = 0;
 	while (e < n && e < 268435456)
 	{
 		e = 16 * e;
@@ -55,10 +63,11 @@ void	conv_hex(unsigned int n, int M)
 		e = e / 16;
 	while (--i != -1)
 	{
-		wr_num_hex(n / e, M);
+		a = a + wr_num_hex(n / e, M);
 		n = n % e;
 		e = e / 16;
 	}
+	return (a);
 }
 /*
 int main()
