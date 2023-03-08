@@ -19,7 +19,7 @@ int	num_var(char const *s)
 
 	i = 0;
 	r = 0;
-	while (i < ft_strlen(s) - 1)
+	while (i < (int)ft_strlen(s) - 1)
 	{
 		if (s[i] == '%')
 		{
@@ -34,7 +34,7 @@ int	num_var(char const *s)
 		}
 		i++;
 	}
-	if (i != ft_strlen(s) && s[ft_strlen(s) - 1] == '%')
+	if (i != (int)ft_strlen(s) && s[(int)ft_strlen(s) - 1] == '%')
 		return (-1);
 	else
 		return (r);
@@ -43,7 +43,7 @@ int	num_var(char const *s)
 int main()
 {
 	int i = -1;
-	char **s = ft_splitf("hola buenos dia%%, que tal estas%d numero %d, caracter %c", '%');
+	char **s = ft_splitf("hola%%, q tal%d num %d, char %c", '%');
 	while (s[++i])
 	{
 		printf("%s/    /%d\n", s[i], i);

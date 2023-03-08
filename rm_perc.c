@@ -12,9 +12,10 @@
 
 #include "libft/libft.h"
 
-char	*save_line(int a, int b, char *s, char const *str)
+char	*save_line(int a, char *s, char const *str)
 {
 	int	i;
+    int b;
 
 	i = 0;
 	b = 0;
@@ -35,12 +36,11 @@ char	*rm_perc(char const *str)
 {
 	int		i;
 	int		a;
-	int		b;
 	char	*s;
 
 	i = 0;
 	a = 0;
-	while (i != ft_strlen(str))
+	while (i != (int)ft_strlen(str))
 	{
 		if (str[i] == '%' && str[i + 1] == '%')
 			i = i + 2;
@@ -51,7 +51,7 @@ char	*rm_perc(char const *str)
 	s = (char *)malloc(sizeof(char) * (a + 1));
 	if (!s)
 		return (0);
-	s = save_line(a, b, s, str);
+	s = save_line(a, s, str);
 	return (s);
 }
 /*

@@ -41,14 +41,12 @@ void	conv_hex_p(uintptr_t n)
 		wr_num_hex_p(n);
 }
 
-void    put_pointers(void *p)
+void	put_pointers(void *p)
 {
-	char character;
-	
 	if (p == NULL)
 	{
 		write(1, "0x0", 3);
-		return;
+		return ;
 	}
 	else
 	{

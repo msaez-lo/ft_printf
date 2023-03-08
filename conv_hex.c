@@ -41,7 +41,7 @@ void	wr_num_hex(unsigned int c, int M)
 
 void	conv_hex(unsigned int n, int M)
 {
-	int	e;
+	unsigned int	e;
 	int	i;
 
 	e = 1;
