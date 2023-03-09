@@ -6,7 +6,7 @@
 /*   By: msaez-lo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:47:54 by msaez-lo          #+#    #+#             */
-/*   Updated: 2023/03/02 19:47:58 by msaez-lo         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:27:06 by msaez-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ unsigned int	count_letters(char const *s, int i, char c)
 		}
 		else
 		{
-		a++;
-		i++;
+			a++;
+			i++;
 		}
 	}
 	if (i == (int)ft_strlen(s) - 1)
@@ -112,6 +112,6 @@ char	**ft_splitf(char const *s, char c)
 #include <stdio.h>
 int main()
 {
-	printf("%s", ft_split("hello!", ' ')[0]);
+	printf("%s", ft_splitf("%%", '%')[0]);
 	//printf("%c", 32:' ')
 }*/

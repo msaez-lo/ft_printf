@@ -6,7 +6,7 @@
 /*   By: msaez-lo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 19:38:58 by msaez-lo          #+#    #+#             */
-/*   Updated: 2022/11/09 19:57:04 by msaez-lo         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:23:39 by msaez-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -48,11 +48,11 @@ char			*ft_strrchr(const char *s, int c);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
-int			ft_putchar_fd(char c, int fd);
-int			ft_putstr_fd(char *s, int fd);
+int				ft_putchar_fd(char c, int fd);
+int				ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
-int			ft_putnbr_fd(int n, int fd);
-int			ft_putlu_fd(unsigned int n, int fd);
+int				ft_putnbr_fd(int n, int fd);
+int				ft_putlu_fd(unsigned int n, int fd);
 typedef struct s_list
 {
 	void			*content;

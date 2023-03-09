@@ -6,7 +6,7 @@
 /*   By: msaez-lo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 19:26:51 by msaez-lo          #+#    #+#             */
-/*   Updated: 2022/12/14 19:26:57 by msaez-lo         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:06:03 by msaez-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -65,9 +65,10 @@ int	ft_printf(char const *str, ...)
 	char	**s;
 	char	*r;
 	int		i;
-	int	a;
+	int		a;
 	va_list	ptr;
 
+	a = 0;
 	i = 0;
 	va_start(ptr, str);
 	s = ft_splitf(str, '%');
@@ -80,8 +81,8 @@ int	ft_printf(char const *str, ...)
 		a = a + putvar(r[0], ptr);
 		if (ft_strlen(r) > 1)
 		{
-			ft_putstr_fd(++r, 1);
-		free(--r);
+			a = a + ft_putstr_fd(++r, 1);
+			free(--r);
 		}
 		else
 			free(r);
